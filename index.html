@@ -156,6 +156,33 @@ body{
 .price-name{font-size:13px;font-weight:500;color:var(--dark);margin-bottom:4px}
 .price-desc{font-size:11px;color:var(--muted);line-height:1.8}
 .price-tag{margin-top:10px;font-size:10px;color:#bbb;letter-spacing:0.1em;text-transform:uppercase}
+.price-tag-btn{
+  margin-top:12px;
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-size:11px;
+  font-weight:400;
+  letter-spacing:0.08em;
+  color:var(--dark);
+  background:rgba(0,0,0,0.06);
+  border:1px solid rgba(0,0,0,0.12);
+  border-radius:20px;
+  padding:6px 14px;
+  cursor:pointer;
+  transition:background .2s,border-color .2s;
+  font-family:inherit;
+}
+.price-tag-btn:hover{background:rgba(0,0,0,0.1);border-color:rgba(0,0,0,0.22)}
+.price-row{
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:var(--muted);
+  padding:6px 0;
+  border-bottom:1px solid rgba(0,0,0,0.05);
+}
+.price-row:last-of-type{border-bottom:none}
 
 /* 포트폴리오 */
 .portfolio-note{font-size:12px;color:var(--muted);line-height:1.9;margin-bottom:14px;word-break:keep-all}
@@ -230,12 +257,21 @@ body{
   <div class="section" id="section-team">
     <div class="section-inner">
       <p class="section-label">Team</p>
-      <p class="team-text">2024~2025년 <strong>창무예술원 전속</strong>으로 무대의 감동을 기록해 온 사진·영상 촬영팀이 독립하여 새롭게 출발합니다.<br><br>공연의 흐름과 무용수의 움직임을 깊이 이해하는 전문 팀으로, 현장의 에너지를 생생하게 담아냅니다.</p>
-      <div class="service-list">
-        <div class="service-item"><div class="service-dot"></div>공연 스틸컷 촬영</div>
-        <div class="service-item"><div class="service-dot"></div>공연 실황 기록 영상</div>
-        <div class="service-item"><div class="service-dot"></div>SNS 하이라이트 편집 (Reels / Shorts)</div>
-        <div class="service-item"><div class="service-dot"></div>행사 및 워크숍 촬영</div>
+      <p class="team-text">
+        <span style='font-size:18px;font-weight:700;color:var(--dark);display:block;margin-bottom:14px;'>흥아트필름컴퍼니는</span>
+        한국 고유의 정서 '흥(興)'에서 출발한 시네마틱 예술 영상 제작 브랜드입니다.<br><br>
+        우리는 무용, 연극, 뮤직비디오, 독립영화 등<br>
+        예술과 움직임이 만나는 장르를 중심으로<br>
+        감정에 기대지 않는 구조, 절제된 언어, 영상 미학을 설계합니다.<br><br>
+        단순한 기록이 아니라,<br>
+        예술을 영상 언어로 재구성하는 작업을 합니다.
+      </p>
+      <div style="margin-top:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,0.07)">
+        <p style="font-size:15px;font-weight:500;color:var(--dark);margin-bottom:12px;letter-spacing:0.02em">팀 구성</p>
+        <p style="font-size:13px;color:var(--muted);line-height:2;font-weight:300">
+          이성진 &nbsp;사진·영상 감독<br>
+          이혜인 &nbsp;영상 감독
+        </p>
       </div>
     </div>
   </div>
@@ -249,22 +285,34 @@ body{
   </button>
   <div class="section" id="section-price">
     <div class="section-inner">
-      <p class="section-label">Pricing</p>
+      <p class="section-label">Service</p>
       <p class="price-note">공연 규모·촬영 시간·편집 분량에 따라 달라질 수 있습니다. 정확한 견적은 상담 후 안내해 드립니다.</p>
       <div class="price-card">
-        <div class="price-name">공연 스틸컷</div>
-        <div class="price-desc">리허설 또는 본 공연 현장 촬영<br>보정 후 디지털 파일 납품</div>
-        <div class="price-tag">견적 문의</div>
-      </div>
-      <div class="price-card">
-        <div class="price-name">실황 기록 영상</div>
-        <div class="price-desc">공연 전체 촬영 · 컬러그레이딩 · 편집 포함<br>풀영상 납품 기본</div>
-        <div class="price-tag">견적 문의</div>
+        <div class="price-name">공연 사진·영상 촬영</div>
+        <div class="price-desc">
+          <strong style="color:var(--dark);font-weight:500">공연 스틸컷</strong><br>
+          리허설 또는 본 공연 현장 촬영, 보정 후 디지털 파일 납품<br><br>
+          <strong style="color:var(--dark);font-weight:500">실황 기록 영상</strong><br>
+          공연 전체 촬영 · 컬러그레이딩 · 편집 포함, 풀영상 납품 기본
+        </div>
+        <button class="price-tag-btn" onclick="togglePrice()">견적 문의 ›</button>
+        <div id="price-detail" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,0.08);animation:fi .25s ease">
+          <div class="price-row"><span>공연 스틸컷 (2시간 이내)</span><span>협의</span></div>
+          <div class="price-row"><span>공연 스틸컷 (반일)</span><span>협의</span></div>
+          <div class="price-row"><span>실황 기록 영상 (편집 포함)</span><span>협의</span></div>
+          <div class="price-row"><span>사진+영상 패키지</span><span>협의</span></div>
+          <p style="font-size:10px;color:#bbb;margin-top:12px;line-height:1.7">정확한 금액은 공연 규모·시간·편집 분량에 따라 달라집니다.<br>아래 상담 문의로 연락 주시면 안내해 드립니다.</p>
+        </div>
       </div>
       <div class="price-card">
         <div class="price-name">SNS 하이라이트</div>
         <div class="price-desc">인스타그램 Reels / 유튜브 Shorts 최적화<br>비트 싱크 편집 · 9:16 세로형 납품</div>
-        <div class="price-tag">견적 문의</div>
+        <button class="price-tag-btn" onclick="goContact()">상담 문의 ›</button>
+      </div>
+      <div class="price-card">
+        <div class="price-name">행사 및 워크숍 촬영</div>
+        <div class="price-desc">행사·워크숍·공개 수업 등 현장 촬영<br>사진 및 영상 납품</div>
+        <button class="price-tag-btn" onclick="goContact()">상담 문의 ›</button>
       </div>
     </div>
   </div>
@@ -349,6 +397,27 @@ body{
 
 </div>
 <script>
+function togglePrice(){
+  var d=document.getElementById('price-detail');
+  var btn=d.previousElementSibling;
+  if(d.style.display==='none'){
+    d.style.display='block';
+    btn.textContent='닫기 ×';
+  } else {
+    d.style.display='none';
+    btn.textContent='견적 문의 ›';
+  }
+}
+function goContact(){
+  // open contact section and scroll
+  var s=document.getElementById('section-contact');
+  var b=s.previousElementSibling;
+  document.querySelectorAll('.section').forEach(function(x){x.classList.remove('open')});
+  document.querySelectorAll('.nav-btn').forEach(function(x){x.classList.remove('active')});
+  s.classList.add('open');
+  b.classList.add('active');
+  setTimeout(function(){b.scrollIntoView({behavior:'smooth',block:'start'})},50);
+}
 function toggle(id){
   var s=document.getElementById('section-'+id);
   var b=s.previousElementSibling;
